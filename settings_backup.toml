@@ -1,0 +1,22 @@
+[smtp]
+username = ""
+passkey = ""
+smtp_server = "smtp.gmail.com"
+smtp_port = 587
+
+[emails]
+ids = []
+subjects = []
+writeups = []
+isfromfile = []
+
+[csv]
+titles = [
+  "Email",
+]
+placeholders = [
+  "email"
+]
+output_folder = "output"
+segregate_by_writeups = true
+segregate_by_ids = false
