@@ -247,10 +247,13 @@ def logging_page(contacts_csv):
     
     email_writeup = random.choice(settings_toml["emails"]["writeups"])
     email_writeup_index = settings_toml["emails"]["writeups"].index(email_writeup)
-    for i, placehold in enumerate(placeholder_index):
-      if placehold != -1: email_writeup.replace("{" + settings_toml["csv"]["placeholders"][i] + "}", contact_details[placehold])
-    email_subject = settings_toml["emails"]["subjects"][email_writeup_index]
     print("   Sending write-up from " + Fore.LIGHTBLACK_EX + email_writeup + Style.RESET_ALL)
+    email_writeup = str(open(email_writeup, mode='r', encoding='utf-8').read())
+    for i, placehold in enumerate(placeholder_index):
+      if placehold == -1: pass
+      else:
+        email_writeup = email_writeup.replace(("{" + settings_toml["csv"]["placeholders"][i] + "}"), (contact_details[placehold]))
+    email_subject = settings_toml["emails"]["subjects"][email_writeup_index]
     
     sending_email = random.choice(settings_toml["emails"]["ids"])
     sending_email_index = settings_toml["emails"]["ids"].index(sending_email)
