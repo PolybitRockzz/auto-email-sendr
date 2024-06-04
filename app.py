@@ -262,13 +262,11 @@ def logging_page(contacts_csv):
     message['To'] = contact_email
     message.attach(MIMEText(email_writeup))
     
-    # SMTP_server.send_message(
-    #   from_addr=sending_email,
-    #   to_addrs=contact_email,
-    #   msg=message
-    # )
-    
-    time.sleep(1)
+    SMTP_server.send_message(
+      from_addr=sending_email,
+      to_addrs=contact_email,
+      msg=message
+    )
     
     if settings_toml["csv"]["segregate_by_ids"]:
       id_output_data[sending_email_index] += "\n" + ",".join(contact_details)
